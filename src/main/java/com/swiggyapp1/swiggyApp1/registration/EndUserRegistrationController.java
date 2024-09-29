@@ -9,5 +9,7 @@ public class EndUserRegistrationController{
     @PostMapping("/add")
     public void addUser(@RequestBody User user) {
         System.out.println("in user registration ");
+        System.out.println("in user registration ");
+
     }
 }
