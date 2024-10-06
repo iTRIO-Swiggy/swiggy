@@ -13,35 +13,35 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserRegistrationController {
 
-    @Autowired
-    UserService userService;
+  @Autowired UserService userService;
 
-    @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
+  @PostMapping("/add")
+  public ResponseEntity<User> addUser(@RequestBody User user) {
+    User createdUser = userService.createUser(user);
+    return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+  }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<User>> showUsers() {
-        List<User> allUsers = userService.getAllUsers();
-        return ResponseEntity.ok(allUsers);
-    }
+  @GetMapping("/all")
+  public ResponseEntity<List<User>> showUsers() {
+    List<User> allUsers = userService.getAllUsers();
+    return ResponseEntity.ok(allUsers);
+  }
 
-    @GetMapping("/usersByType/{userType}")
-    public ResponseEntity<List<User>> showUsersByType(@PathVariable String userType) {
-        List<User> allUsers = userService.getAllUsersByType(userType);
-        return ResponseEntity.ok(allUsers);
-    }
+  @GetMapping("/usersByType/{userType}")
+  public ResponseEntity<List<User>> showUsersByType(@PathVariable String userType) {
+    List<User> allUsers = userService.getAllUsersByType(userType);
+    return ResponseEntity.ok(allUsers);
+  }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUserDetails(@RequestBody User user) {
-        User updatedUser = userService.updateUser(user);
-        return ResponseEntity.ok(updatedUser);
-    }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUserById(@PathVariable long id) {
-        userService.deleteUserById(id);
-        return ResponseEntity.noContent().build();
-    }
+  @PutMapping("/update/{id}")
+  public ResponseEntity<User> updateUserDetails(@RequestBody User user) {
+    User updatedUser = userService.updateUser(user);
+    return ResponseEntity.ok(updatedUser);
+  }
+
+  @DeleteMapping("/delete/{id}")
+  public ResponseEntity<Void> deleteUserById(@PathVariable long id) {
+    userService.deleteUserById(id);
+    return ResponseEntity.noContent().build();
+  }
 }

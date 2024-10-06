@@ -17,7 +17,7 @@ public enum UserRole {
     }
 
     public String getCode() {
-        return code;
+    return code;
     }
 
     public String getDisplayName() {
