@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
   @Query("SELECT u FROM User u WHERE u.usertype = :usertype")
   List<User> findByUsertype(@Param("usertype") String usertype);
+
+  User findByEmail(String email);
 }

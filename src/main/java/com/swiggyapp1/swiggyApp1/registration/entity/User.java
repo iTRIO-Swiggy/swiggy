@@ -17,6 +17,8 @@ public class User {
   @Column private String address;
   @Column private String mobilenumber;
   @Column private String usertype;
+  @Column private String profilepicture;
+  @Column private String provider;
 
   public Long getId() {
     return id;
@@ -88,5 +90,21 @@ public class User {
 
   public void setUsertype(String usertype) {
     this.usertype = usertype;
+  }
+
+  public String getProfilepicture() {
+    return profilepicture;
+  }
+
+  public void setProfilepicture(String profilepicture) {
+    this.profilepicture = profilepicture;
+  }
+
+  public String getProvider() {
+    return provider;
+  }
+
+  public void setProvider(String provider) {
+    this.provider = provider;
   }
 }
