@@ -2,13 +2,12 @@ package com.swiggyapp1.swiggyApp1.registration.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "Users")
 public class User {
-  @Id @GeneratedValue private Long id;
+  @Id @GeneratedValue private BigInteger id;
   @Column private String fname;
   @Column private String lname;
   @Column private String email;
@@ -20,11 +19,11 @@ public class User {
   @Column private String profilepicture;
   @Column private String provider;
 
-  public Long getId() {
+  public BigInteger getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(BigInteger id) {
     this.id = id;
   }
 

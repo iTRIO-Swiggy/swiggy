@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -40,7 +41,7 @@ public class UserRegistrationController {
   }
 
   @DeleteMapping("/delete/{id}")
-  public ResponseEntity<Void> deleteUserById(@PathVariable long id) {
+  public ResponseEntity<Void> deleteUserById(@PathVariable BigInteger id) {
     userService.deleteUserById(id);
     return ResponseEntity.noContent().build();
   }

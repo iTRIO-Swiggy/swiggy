@@ -7,6 +7,7 @@ import com.swiggyapp1.swiggyApp1.registration.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,7 @@ public class UserService {
     throw new ResourceNotFoundException("unknown user id");
   }
 
-  public void deleteUserById(long id) {
+  public void deleteUserById(BigInteger id) {
     userRepository.deleteById(id);
   }
 }

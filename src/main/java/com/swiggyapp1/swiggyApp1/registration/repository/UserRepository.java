@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigInteger;
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, BigInteger> {
   @Query("SELECT u FROM User u WHERE u.usertype = :usertype")
   List<User> findByUsertype(@Param("usertype") String usertype);
 
