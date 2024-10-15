@@ -7,4 +7,3 @@
 6. Mapper Implemetation (https://github.com/nithingd91/accounts/blob/master/src/main/java/com/nvs/accounts/mapper/AccountsMapper.java)
 7. Use Impl for Services (https://github.com/nithingd91/accounts/tree/master/src/main/java/com/nvs/accounts/service)
 8. Stop direct commits to master branch only PR approved code should be merged.
-9. Test
