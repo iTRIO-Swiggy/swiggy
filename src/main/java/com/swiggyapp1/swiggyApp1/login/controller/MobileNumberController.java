@@ -2,6 +2,7 @@ package com.swiggyapp1.swiggyApp1.login.controller;
 
 import com.swiggyapp1.swiggyApp1.registration.entity.User;
 import com.swiggyapp1.swiggyApp1.registration.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +11,10 @@ import java.math.BigInteger;
 
 @RestController
 @RequestMapping("/users/mobile")
+@AllArgsConstructor
 public class MobileNumberController {
 
-  @Autowired private UserRepository userRepository;
+  private UserRepository userRepository;
 
   @PostMapping("/request")
   public ResponseEntity<String> handleMobileRequest(

@@ -16,18 +16,19 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(
-                    authorizeRequests ->
-                            authorizeRequests
-                                    .requestMatchers("/", "/oauth2/**", "/users/**")
-                                    .permitAll()
-                                    .anyRequest()
-                                    .authenticated())
-            .oauth2Login(
-                    oauth2Login ->
-                            oauth2Login
-                                    .defaultSuccessUrl("/oauth2/success", true)
-                                    .failureUrl("/login?error=true"));
+    http
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/swagger-ui/**", "/v3/api-docs/**")) // Ensure CSRF is ignored for Swagger
+            .authorizeHttpRequests(authorizeRequests ->
+                    authorizeRequests
+                            .requestMatchers("/", "/oauth2/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Permit access to these endpoints
+                            .anyRequest().authenticated() // All other endpoints require authentication
+            )
+            .oauth2Login(oauth2Login ->
+                    oauth2Login
+                            .defaultSuccessUrl("/oauth2/success", true)
+                            .failureUrl("/login?error=true")
+            );
+
     return http.build();
   }
 
@@ -39,8 +40,8 @@ public class SecurityConfig {
 
   private ClientRegistration googleClientRegistration() {
     return ClientRegistration.withRegistrationId("google")
-            .clientId("427014481836-lh7kj12at8c45jmfar5im8c328tufait.apps.googleusercontent.com")
-            .clientSecret("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")
+            .clientId("34811617744-f1nnt26uarub2tk8i8n6rvo1l0arvj91.apps.googleusercontent.com")
+            .clientSecret("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")
             .scope("openid", "profile", "email")
             .authorizationUri("https://accounts.google.com/o/oauth2/auth")
             .tokenUri("https://oauth2.googleapis.com/token")
@@ -54,8 +55,8 @@ public class SecurityConfig {
 
   private ClientRegistration facebookClientRegistration() {
     return ClientRegistration.withRegistrationId("facebook")
-            .clientId("3950478065187206")
-            .clientSecret("c3077c0ce0be4b88964efdca4c8af8be")
+            .clientId("your-facebook-client-id")
+            .clientSecret("your-facebook-client-secret")
             .scope("public_profile", "email")
             .authorizationUri("https://www.facebook.com/v11.0/dialog/oauth")
             .tokenUri("https://graph.facebook.com/v11.0/oauth/access_token")
